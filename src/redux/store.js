@@ -3,6 +3,7 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
+import { Router } from 'react-router-dom/cjs/react-router-dom.min';
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -36,6 +37,17 @@ const movies = (state = [], action) => {
   }
 }
 
+const movieClicked = (state = {}, action) => {
+  if (action.type === "CLICKED_MOVIE") {
+    return action.payload;
+   
+   
+  }
+  return state;
+};
+
+
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
   switch (action.type) {
@@ -51,6 +63,7 @@ const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
+    movieClicked
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger),

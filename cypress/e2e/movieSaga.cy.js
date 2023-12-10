@@ -37,7 +37,7 @@ describe('Movies Saga', () => {
     //check Avatar Stuff
     cy.contains(/Pandora/i)
     cy.contains(/Avatar/i)
-    cy.get("[data-testid='movieDetail']").find('img').should('have.attr', 'src', 'images/avatar.jpeg')
+    cy.get("[data-testid='movieDetails']").find('img').should('have.attr', 'src', 'images/avatar.jpeg')
 
     //Check Beauty and the Beast
     cy.get(`[data-testid="toList"]`).click();
@@ -45,7 +45,7 @@ describe('Movies Saga', () => {
 
     cy.contains(/Beast/i)
     cy.contains(/Condon/i)
-    cy.get("[data-testid='movieDetail']").find('img').should('have.attr', 'src', 'images/beauty-and-the-beast.jpg')
+    cy.get("[data-testid='movieDetails']").find('img').should('have.attr', 'src', 'images/beauty-and-the-beast.jpg')
 
 
   })

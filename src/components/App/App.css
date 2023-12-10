@@ -1,3 +1,25 @@
 .App {
   text-align: center;
 }
+
+
+img:hover {
+
+  transform: scale(1.15);
+
+}
+
+img {
+  transition: .2s ease-in-out 0s
+}
+
+h1 {
+  background-color: rgb(0, 255, 145);
+  padding: 10px;
+  margin: 0px;
+}
+
+button {
+  box-shadow: 2px 2px;
+  border-radius: 52px;
+}

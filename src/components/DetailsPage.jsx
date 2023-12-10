@@ -25,19 +25,20 @@ export default function DetailsPage() {
 
     }
     return (
-        <div data-testid="movieDetails">
-            <p>{movieClickedOn.description}</p>
+        <div data-testid="movieDetails" key={movieClickedOn.id}>
+           
             <h3>{movieClickedOn.title}</h3>
             <img src={movieClickedOn.poster} alt={movieClickedOn.title} />
             {
-                Genre.map(movie => {
+                Genre.map(movie=> {
                     return (
-                        <div data-testid='movieItem' key={movie.id}>
+                        <div className='genres' data-testid='movieItem' key={movie.id}>
                             <p>{movie.name}</p>
                         </div>
                     );
                 })
             }
+            <p>{movieClickedOn.description}</p>
             <button data-testid="toList" onClick={goHome}>back</button>
         </div>
     )

@@ -14,12 +14,27 @@ img {
 }
 
 h1 {
-  background-color: rgb(0, 255, 145);
-  padding: 10px;
+  background-color: rgb(0, 145, 255);
+  padding: 20px;
   margin: 0px;
 }
 
 button {
   box-shadow: 2px 2px;
   border-radius: 52px;
+}
+
+body {
+  background-color: lightgray;
+}
+
+p {
+  border: 2px solid;
+  border-radius: 55px;
+  border-width: 5pxpx;
+  text-align: center;
+  padding: 15px;
+  background-color: darkgray;
+  border-spacing: 0;
+  
 }

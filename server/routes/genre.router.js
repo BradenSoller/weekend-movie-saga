@@ -5,7 +5,7 @@ const pool = require("../modules/pool");
 router.get("/:id", (req, res) => {
   console.log('req.params:',req.params.id);
   const query = `
-SELECT "movies"."id","movies"."title","movies"."poster","movies"."description", "genres"."name"
+SELECT "genres"."id","movies"."title","movies"."poster","movies"."description", "genres"."name"
 FROM "movies"
 INNER JOIN "movies_genres"
 ON "movies_genres"."movie_id" = "movies"."id"

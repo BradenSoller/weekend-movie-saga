@@ -14,18 +14,19 @@ function MovieList() {
   const history = useHistory()
   const dispatch = useDispatch();
   const movies = useSelector(store => store.movies);
-  const movieClickedOn = useSelector(store => store.movieClicked);
+  const Genres = useSelector(store => store.getGenres)
+  console.log("genres:", Genres);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
   }, []);
 
 
-  const ShowDetails = (title,poster,description) => {
+  const ShowDetails = (movie) => {
    
     dispatch({
-      type: "CLICKED_MOVIE",
-      payload: {title:title, poster:poster, description: description}
+      type: "FETCH_GENRES",
+      payload: movie
     })
 
      history.push("./details")
@@ -40,7 +41,7 @@ function MovieList() {
           return (
             <div data-testid='movieItem' key={movie.id}>
               <h3>{movie.title}</h3>
-              <img onClick={() => ShowDetails(movie.title, movie.poster, movie.description)} src={movie.poster} alt={movie.title} />
+              <img data-testid="toDetails" onClick={() => ShowDetails(movie)} src={movie.poster} alt={movie.title} />
             </div>
           );
         })}

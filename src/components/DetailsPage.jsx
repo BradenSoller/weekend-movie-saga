@@ -14,34 +14,31 @@ export default function DetailsPage() {
 
 
     const movieClickedOn = useSelector(store => store.movieClicked)
-
-
+    console.log('movieclicked:', movieClickedOn);
+    const Genre = useSelector(store => store.genres)
+    console.log("genre:", Genre);
 
     const goHome = () => {
-        dispatch({
-    type: "FETCH_MOVIES"
-})
 
-        history.push("./")
+
+        history.push("/")
 
     }
     return (
-        <div>
+        <div data-testid="movieDetails">
+            <p>{movieClickedOn.description}</p>
+            <h3>{movieClickedOn.title}</h3>
+            <img src={movieClickedOn.poster} alt={movieClickedOn.title} />
             {
-                movieClickedOn && (
-                    <div>
-                        <p>{movieClickedOn.title}</p>
-                        <img src={movieClickedOn.poster} alt={movieClickedOn.title} />
-                        <p>{movieClickedOn.description }</p>
-
-
-                        {/* Display other movie details here */}
-                    </div>
-                )
+                Genre.map(movie => {
+                    return (
+                        <div data-testid='movieItem' key={movie.id}>
+                            <p>{movie.name}</p>
+                        </div>
+                    );
+                })
             }
-
-            <button onClick={goHome}>back</button>
+            <button data-testid="toList" onClick={goHome}>back</button>
         </div>
     )
-
 }

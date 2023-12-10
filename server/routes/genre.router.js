@@ -2,25 +2,28 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
+  console.log('req.params:',req.params.id);
   const query = `
-  SELECT "movies"."title", "genres"."name"
+SELECT "movies"."id","movies"."title","movies"."poster","movies"."description", "genres"."name"
 FROM "movies"
 INNER JOIN "movies_genres"
 ON "movies_genres"."movie_id" = "movies"."id"
 INNER JOIN "genres"
-ON "genres"."id" = "movies_genres"."genre_id";
-  `;
+ON "genres"."id" = "movies_genres"."genre_id"
+WHERE "movies"."id" = ${req.params.id};
+`;
   pool
     .query(query)
-    .then((result) => {
-      res.send(result.rows);
+    .then(result => {
       console.log("results.rows", result.rows);
+      res.send(result.rows);
     })
     .catch((err) => {
-      console.log("ERROR: Get all movies", err);
+      console.log("ERROR: Get all genres", err);
       res.sendStatus(500);
     });
+  
 });
 
 module.exports = router;
